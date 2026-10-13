@@ -1,0 +1,44 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.v1
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile.v1
+#1 transferring dockerfile: 234B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-alpine
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4
+#4 resolve docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 4.43kB 0.0s done
+#5 DONE 0.0s
+
+#6 [2/4] WORKDIR /koktobe-lift
+#6 CACHED
+
+#7 [3/4] COPY . .
+#7 DONE 0.0s
+
+#8 [4/4] RUN python tools/build_report.py
+#8 0.295 out/report.json готов: 30 записей, контрольный код 549D272A
+#8 DONE 0.3s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 0.2s done
+#9 exporting manifest sha256:fd3171a1c6992ef02685a427a2822e68b3575e09469128301538f050381117cc 0.0s done
+#9 exporting config sha256:d995976857dc7d7e7601d1f3f7f058aea88c77d6cb55425a5b72738f16b4a159 0.0s done
+#9 exporting attestation manifest sha256:85198e0172f5fafe3baed149679144c285b20f81554564b97b02f68f9bc62fbd 0.0s done
+#9 exporting manifest list sha256:7799cde8404ffde74c81c7eefd6c4b88d81c50d75b4476e6176976e627e99a11 0.0s done
+#9 naming to docker.io/library/koktobe-lift:v1 done
+#9 unpacking to docker.io/library/koktobe-lift:v1 0.1s done
+#9 DONE 0.3s

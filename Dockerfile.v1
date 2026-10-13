@@ -1,0 +1,7 @@
+FROM python:3.12-alpine
+WORKDIR /koktobe-lift
+COPY . .
+RUN python tools/build_report.py
+ENV REPORT_FILE="out/report.json" BRANCH="Kok-Tobe" TOP="5"
+EXPOSE 8080
+CMD ["python", "app/server.py"]
