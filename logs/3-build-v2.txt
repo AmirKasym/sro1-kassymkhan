@@ -1,0 +1,69 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 415B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-alpine
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 247B done
+#4 DONE 0.0s
+
+#5 [build 1/5] FROM docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4
+#5 resolve docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4 0.0s done
+#5 CACHED
+
+#6 [stage-2 2/4] WORKDIR /koktobe-lift
+#6 CACHED
+
+#7 [build 2/5] WORKDIR /src
+#7 DONE 0.0s
+
+#8 [build 3/5] COPY tools/ tools/
+#8 DONE 0.1s
+
+#9 [build 4/5] COPY data/ data/
+#9 DONE 0.0s
+
+#10 [build 5/5] RUN python tools/build_report.py
+#10 0.314 out/report.json готов: 35 записей, контрольный код F3299B80
+#10 DONE 0.3s
+
+#11 [test 1/2] COPY tests/ tests/
+#11 DONE 0.1s
+
+#12 [test 2/2] RUN python -m unittest discover -s tests -v
+#12 0.405 test_amount_by_price (test_data.DataRulesTest.test_amount_by_price) ... ok
+#12 0.405 test_columns (test_data.DataRulesTest.test_columns) ... ok
+#12 0.405 test_hour_limit (test_data.DataRulesTest.test_hour_limit) ... ok
+#12 0.405 test_own_records_added (test_data.DataRulesTest.test_own_records_added) ... ok
+#12 0.405 test_report_created (test_data.DataRulesTest.test_report_created) ... ok
+#12 0.406 test_working_hours (test_data.DataRulesTest.test_working_hours) ... ok
+#12 0.406 
+#12 0.406 ----------------------------------------------------------------------
+#12 0.406 Ran 6 tests in 0.001s
+#12 0.406 
+#12 0.406 OK
+#12 DONE 0.4s
+
+#13 [stage-2 3/4] COPY --from=test /src/out/report.json .
+#13 DONE 0.0s
+
+#14 [stage-2 4/4] COPY app/server.py .
+#14 DONE 0.1s
+
+#15 exporting to image
+#15 exporting layers 0.1s done
+#15 exporting manifest sha256:2a2200e28eb1d9639659e541ef0e9621b14e5e5d83aa50ba4aa5dd747155d216 0.0s done
+#15 exporting config sha256:e6dd0956284e0ff04772e685fd03f40131ce6c49bb816228b4427e43e0a424e0 0.0s done
+#15 exporting attestation manifest sha256:0268fa947797083121937ae67a03327a698108e957f652348ae4aa847396887a 0.0s done
+#15 exporting manifest list sha256:c8262301166e746c2a13df786ad0ea8b0c3d5e280de9ba3a5dd234dbd59bf1af 0.0s done
+#15 naming to docker.io/library/koktobe-lift:v2 done
+#15 unpacking to docker.io/library/koktobe-lift:v2 0.0s done
+#15 DONE 0.3s

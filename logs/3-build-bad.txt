@@ -1,0 +1,81 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 415B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-alpine
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 1.55kB done
+#4 DONE 0.0s
+
+#5 [build 1/5] FROM docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4
+#5 resolve docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4 0.0s done
+#5 DONE 0.0s
+
+#6 [build 2/5] WORKDIR /src
+#6 CACHED
+
+#7 [build 3/5] COPY tools/ tools/
+#7 CACHED
+
+#8 [build 4/5] COPY data/ data/
+#8 DONE 0.0s
+
+#9 [build 5/5] RUN python tools/build_report.py
+#9 0.326 out/report.json готов: 36 записей, контрольный код 7BA491B1
+#9 DONE 0.4s
+
+#10 [test 1/2] COPY tests/ tests/
+#10 DONE 0.1s
+
+#11 [test 2/2] RUN python -m unittest discover -s tests -v
+#11 0.377 test_amount_by_price (test_data.DataRulesTest.test_amount_by_price) ... ok
+#11 0.377 test_columns (test_data.DataRulesTest.test_columns) ... ok
+#11 0.377 test_hour_limit (test_data.DataRulesTest.test_hour_limit) ... 
+#11 0.377   test_hour_limit (test_data.DataRulesTest.test_hour_limit) (slot=('2026-10-04', '12')) ... FAIL
+#11 0.377 test_own_records_added (test_data.DataRulesTest.test_own_records_added) ... ok
+#11 0.377 test_report_created (test_data.DataRulesTest.test_report_created) ... ok
+#11 0.378 test_working_hours (test_data.DataRulesTest.test_working_hours) ... ok
+#11 0.378 
+#11 0.378 ======================================================================
+#11 0.378 FAIL: test_hour_limit (test_data.DataRulesTest.test_hour_limit) (slot=('2026-10-04', '12'))
+#11 0.378 ----------------------------------------------------------------------
+#11 0.378 Traceback (most recent call last):
+#11 0.378   File "/src/tests/test_data.py", line 46, in test_hour_limit
+#11 0.378     self.assertLessEqual(n, HOUR_LIMIT)
+#11 0.378 AssertionError: 43 not less than or equal to 40
+#11 0.378 
+#11 0.378 ----------------------------------------------------------------------
+#11 0.378 Ran 6 tests in 0.001s
+#11 0.378 
+#11 0.378 FAILED (failures=1)
+#11 ERROR: process "/bin/sh -c python -m unittest discover -s tests -v" did not complete successfully: exit code: 1
+------
+ > [test 2/2] RUN python -m unittest discover -s tests -v:
+0.378 ----------------------------------------------------------------------
+0.378 Traceback (most recent call last):
+0.378   File "/src/tests/test_data.py", line 46, in test_hour_limit
+0.378     self.assertLessEqual(n, HOUR_LIMIT)
+0.378 AssertionError: 43 not less than or equal to 40
+0.378 
+0.378 ----------------------------------------------------------------------
+0.378 Ran 6 tests in 0.001s
+0.378 
+0.378 FAILED (failures=1)
+------
+Dockerfile:9
+--------------------
+   7 |     FROM build AS test
+   8 |     COPY tests/ tests/
+   9 | >>> RUN python -m unittest discover -s tests -v
+  10 |     
+  11 |     FROM python:3.12-alpine
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c python -m unittest discover -s tests -v" did not complete successfully: exit code: 1
