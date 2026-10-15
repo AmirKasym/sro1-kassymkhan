@@ -1,0 +1,62 @@
+CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS                  PORTS                                         NAMES
+8b34acdb928a   koktobe-lift-web:v1   "/docker-entrypoint.…"   1 second ago    Up Less than a second   0.0.0.0:8614->80/tcp, [::]:8614->80/tcp       lift-web
+7b5429db5daa   koktobe-lift:v3       "python server.py"       3 seconds ago   Up 3 seconds            0.0.0.0:8514->8080/tcp, [::]:8514->8080/tcp   lift-api
+[
+    {
+        "Name": "lift-net",
+        "Id": "dfd68d1c36d775310a4449115ccdc823c019def6cc98d09e63db3c4384248413",
+        "Created": "2026-10-15T10:11:28.982862579Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "7b5429db5daab29cf8a6d98502e1c8c5c05e453349da6fe7f13b292fc466dfde": {
+                "Name": "lift-api",
+                "EndpointID": "e648797b7d7232387efc6ba0cba1c3214230f3707e229a619d61c40b19fad288",
+                "MacAddress": "4a:ea:26:a8:86:8d",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "8b34acdb928a4461f7a6e0bb2a06355d0d1915162989f0eeae981e1554a92cde": {
+                "Name": "lift-web",
+                "EndpointID": "3ed32302e13dc477350114f75c41155842074649b702a48fe445243d149e9278",
+                "MacAddress": "26:5f:51:7f:1c:ed",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 5,
+                        "DynamicIPsAvailable": 65531
+                    }
+                }
+            }
+        }
+    }
+]
