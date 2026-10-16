@@ -45,6 +45,11 @@ class DataRulesTest(unittest.TestCase):
             with self.subTest(slot=key):
                 self.assertLessEqual(n, HOUR_LIMIT)
 
+    def test_max_10_per_ticket(self):
+        for line, r in enumerate(ROWS, start=2):
+            with self.subTest(line=line):
+                self.assertLessEqual(int(r["passengers"]), 10)
+
 
 if __name__ == "__main__":
     unittest.main()
