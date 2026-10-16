@@ -1,0 +1,58 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 415B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-alpine
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 1.51kB done
+#4 DONE 0.0s
+
+#5 [build 1/5] FROM docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4
+#5 resolve docker.io/library/python:3.12-alpine@sha256:1b668429b3511ab407d8e00648891631b0b1a4d7e15e3ca70f38ab5b91ad4ab4 0.0s done
+#5 DONE 0.0s
+
+#6 [stage-2 3/4] COPY --from=test /src/out/report.json .
+#6 CACHED
+
+#7 [test 1/2] COPY tests/ tests/
+#7 CACHED
+
+#8 [build 3/5] COPY tools/ tools/
+#8 CACHED
+
+#9 [build 4/5] COPY data/ data/
+#9 CACHED
+
+#10 [build 2/5] WORKDIR /src
+#10 CACHED
+
+#11 [stage-2 2/4] WORKDIR /koktobe-lift
+#11 CACHED
+
+#12 [build 5/5] RUN python tools/build_report.py
+#12 CACHED
+
+#13 [test 2/2] RUN python -m unittest discover -s tests -v
+#13 CACHED
+
+#14 [stage-2 4/4] COPY app/server.py .
+#14 CACHED
+
+#15 exporting to image
+#15 exporting layers done
+#15 exporting manifest sha256:03628647f4e1f255cd1409f2d5809322f4e0cd930310be121dff635a22246d82 done
+#15 exporting config sha256:b7e434e8d113e3b2444a2e2a9b877c07fc2a5c0d71288ce04dde6b8d2e74dbc8
+#15 exporting config sha256:b7e434e8d113e3b2444a2e2a9b877c07fc2a5c0d71288ce04dde6b8d2e74dbc8 done
+#15 exporting attestation manifest sha256:92cf6d448fa526b8db9db6fec35fa26dac8989b6767f09a5a3c562c964f2d145 0.0s done
+#15 exporting manifest list sha256:58a9d335e961951796507c76ac7500cb0041db11570cb007749044160fd5d654 0.0s done
+#15 naming to docker.io/library/koktobe-lift:v4 done
+#15 unpacking to docker.io/library/koktobe-lift:v4 done
+#15 DONE 0.1s

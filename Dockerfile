@@ -10,7 +10,7 @@ RUN python -m unittest discover -s tests -v
 
 FROM python:3.12-alpine
 WORKDIR /koktobe-lift
-ENV BRANCH="Kok-Tobe" TOP="5"
+ENV BRANCH="Kok-Tobe" TOP="2"
 EXPOSE 8080
 COPY --from=test /src/out/report.json .
 COPY app/server.py .
