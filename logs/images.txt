@@ -1,0 +1,5 @@
+IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+koktobe-lift-web:v1   b72d93ce9feb       93.6MB         26.3MB        
+koktobe-lift:v1       74e5a437129f       84.5MB         20.9MB        
+koktobe-lift:v2       310fe0a23be2         83MB         20.6MB        
+koktobe-lift:v3       fc6b30816267         83MB         20.6MB        
