@@ -27,7 +27,7 @@
 3. Какие шаги на этапе 4 были CACHED и почему?
    Какие шаги выполняются заново при изменении records.csv?
 
-   На этапе 4 я поменял только app/server.py, поэтому все шаги стадий build и test (WORKDIR /src, COPY tools, COPY data, RUN build_report.py, COPY tests, RUN unittest) и COPY --from=test были CACHED: их файлы не менялись. Заново выполнился только COPY app/server.py в финальной стадии. Когда я для проверки поменял одну строку в records.csv, CACHED остались только WORKDIR и COPY tools/, а COPY data/ и всё после него (генерация отчёта, тесты, копирование report.json и server.py) выполнилось заново, и контрольный код поменялся.
+   На этапе 4 я поменял только app/server.py, поэтому все шаги стадий build и test (WORKDIR /src, COPY tools, COPY data, RUN build_report.py, COPY tests, RUN unittest) и COPY --from=test были CACHED: их файлы не менялись. Заново выполнился только COPY app/server.py в финальной стадии. Когда я для проверки поменял одну строку в records.csv, CACHED остались только WORKDIR и COPY tools/, а COPY data/ и всё после него (генерация отчёта, тесты, копирование report.json и server.py) выполнилось заново, и контрольный код поменялся. В итоговом Dockerfile server.py копируется раньше report.json, поэтому при смене данных COPY app/server.py остаётся CACHED.
 
 4. Что было бы, если бы финальная стадия брала report.json
    не из стадии test, а из стадии build?
