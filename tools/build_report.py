@@ -29,6 +29,7 @@ def money(value):
 def build(rows):
     by_hour = defaultdict(lambda: [0, 0])
     by_dir = defaultdict(lambda: [0, 0])
+    by_day = defaultdict(lambda: [0, 0])
     for r in rows:
         p, a = int(r["passengers"]), int(r["amount"])
         h = by_hour[int(r["hour"])]
@@ -37,6 +38,9 @@ def build(rows):
         d = by_dir[r["direction"]]
         d[0] += p
         d[1] += a
+        day = by_day[r["date"]]
+        day[0] += p
+        day[1] += a
     revenue = sum(int(r["amount"]) for r in rows)
     people = sum(int(r["passengers"]) for r in rows)
     summary = [
@@ -46,6 +50,7 @@ def build(rows):
     ]
     hours = sorted(by_hour.items(), key=lambda kv: (-kv[1][0], kv[0]))
     dirs = sorted(by_dir.items(), key=lambda kv: -kv[1][1])
+    days = sorted(by_day.items())
     tables = [
         {"title": "Пассажиры по часам (два дня)",
          "columns": ["Час", "Пассажиров", "Выручка"],
@@ -53,6 +58,9 @@ def build(rows):
         {"title": "Выручка по направлениям",
          "columns": ["Направление", "Пассажиров", "Выручка"],
          "rows": [[k, v[0], money(v[1])] for k, v in dirs]},
+        {"title": "Выручка по дням",
+         "columns": ["Дата", "Пассажиров", "Выручка"],
+         "rows": [[k, v[0], money(v[1])] for k, v in days]},
     ]
     return summary, tables
 
